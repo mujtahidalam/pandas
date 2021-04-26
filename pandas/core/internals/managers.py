@@ -184,7 +184,7 @@ class BaseBlockManager(DataManager):
         return self._blklocs
 
     def make_empty(self: T, axes=None) -> T:
-        """ return an empty BlockManager with the items axis of len 0 """
+        """return an empty BlockManager with the items axis of len 0"""
         if axes is None:
             axes = [Index([])] + self.axes[1:]
 
@@ -472,7 +472,7 @@ class BaseBlockManager(DataManager):
         inplace: bool = False,
         regex: bool = False,
     ) -> T:
-        """ do a list replace """
+        """do a list replace"""
         inplace = validate_bool_kwarg(inplace, "inplace")
 
         bm = self.apply(
@@ -516,7 +516,7 @@ class BaseBlockManager(DataManager):
 
     @property
     def is_view(self) -> bool:
-        """ return a boolean if we are a single block and are a view """
+        """return a boolean if we are a single block and are a view"""
         if len(self.blocks) == 1:
             return self.blocks[0].is_view
 
@@ -566,7 +566,7 @@ class BaseBlockManager(DataManager):
     def _combine(
         self: T, blocks: list[Block], copy: bool = True, index: Index | None = None
     ) -> T:
-        """ return a new manager with the blocks """
+        """return a new manager with the blocks"""
         if len(blocks) == 0:
             return self.make_empty()
 
@@ -1477,7 +1477,7 @@ class BlockManager(libinternals.BlockManager, BaseBlockManager):
 
 
 class SingleBlockManager(BaseBlockManager, SingleDataManager):
-    """ manage a single block with """
+    """manage a single block with"""
 
     ndim = 1
     _is_consolidated = True
@@ -1571,12 +1571,12 @@ class SingleBlockManager(BaseBlockManager, SingleDataManager):
 
     @property
     def _blknos(self):
-        """ compat with BlockManager """
+        """compat with BlockManager"""
         return None
 
     @property
     def _blklocs(self):
-        """ compat with BlockManager """
+        """compat with BlockManager"""
         return None
 
     def getitem_mgr(self, indexer) -> SingleBlockManager:
@@ -1734,7 +1734,7 @@ def construction_error(
     axes: list[Index],
     e: ValueError | None = None,
 ):
-    """ raise a helpful message about our construction """
+    """raise a helpful message about our construction"""
     passed = tuple(map(int, [tot_items] + list(block_shape)))
     # Correcting the user facing error message during dataframe construction
     if len(passed) <= 2:
@@ -1860,7 +1860,7 @@ def _simple_blockify(tuples, dtype, consolidate: bool) -> list[Block]:
 
 
 def _multi_blockify(tuples, dtype: DtypeObj | None = None, consolidate: bool = True):
-    """ return an array of blocks that potentially have different dtypes """
+    """return an array of blocks that potentially have different dtypes"""
 
     if not consolidate:
         return _tuples_to_blocks_no_consolidate(tuples, dtype=dtype)

@@ -29,7 +29,7 @@ from pandas.core.indexes.datetimelike import DatetimeIndexOpsMixin
 
 
 class Base:
-    """ base class for index sub-class tests """
+    """base class for index sub-class tests"""
 
     _holder: Type[Index]
 

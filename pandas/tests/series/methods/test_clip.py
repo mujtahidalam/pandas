@@ -41,7 +41,7 @@ class TestSeriesClip:
             assert list(isna(s)) == list(isna(upper))
 
     def test_clip_with_na_args(self):
-        """Should process np.nan argument as None """
+        """Should process np.nan argument as None"""
         # GH#17276
         s = Series([1, 2, 3])
 
